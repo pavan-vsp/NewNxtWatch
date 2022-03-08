@@ -22,7 +22,11 @@ class VideoItem extends Component {
           return (
             <Link to={`/videos/${id}`}>
               <VideoListItem themeMode={mode}>
-                <Image src={thumbnailUrl} alt="im" imageWidth="400px" />
+                <Image
+                  src={thumbnailUrl}
+                  alt="video thumbnail"
+                  imageWidth="400px"
+                />
 
                 <DetailsContainer>
                   <RightSideDetails>
