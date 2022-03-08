@@ -31,7 +31,7 @@ const PopupDesign = props => {
             <Popup
               modal
               trigger={
-                <LogoutButton type="button" darkMode={mode}>
+                <LogoutButton type="button" data-testid="theme" darkMode={mode}>
                   Logout
                 </LogoutButton>
               }

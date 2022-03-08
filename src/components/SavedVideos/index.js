@@ -7,6 +7,7 @@ import {
   SideVideos,
   SavedVideosContainer,
   SavedVideosContentContainer,
+  UnorderedListForSavedVideo,
   SideBarContainer,
   VideosContainer,
   NoSavedVideosContainer,
@@ -28,7 +29,7 @@ const SavedVideos = () => (
         return null
       })
       const renderSavedVideos = () => (
-        <>
+        <UnorderedListForSavedVideo>
           <LinkItem darkMode={mode}>
             <IconContainer darkMode={mode}>
               <BiListPlus className="header-icon" />
@@ -43,7 +44,7 @@ const SavedVideos = () => (
               />
             ))}
           </VideosContainer>
-        </>
+        </UnorderedListForSavedVideo>
       )
 
       return (

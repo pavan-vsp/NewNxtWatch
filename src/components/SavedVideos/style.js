@@ -52,7 +52,7 @@ export const IconContainer = styled.div`
   margin: 25px;
 `
 
-export const LinkItem = styled.div`
+export const LinkItem = styled.li`
   display: flex;
   align-items: center;
   margin-top: 30px;
@@ -67,3 +67,8 @@ export const Heading = styled.h1`
   color: ${props => (!props.darkMode ? '#0f0f0f' : '#f9f9f9')};
 `
 export const SideBarContainer = styled.div``
+
+export const UnorderedListForSavedVideo = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+`

@@ -12,7 +12,7 @@ import {
 class VideoItem extends Component {
   render() {
     const {gameDetails} = this.props
-    const {id, thumbnailUrl, viewCount, profileImageUrl, title} = gameDetails
+    const {id, thumbnailUrl, viewCount, title} = gameDetails
 
     return (
       <Context.Consumer>

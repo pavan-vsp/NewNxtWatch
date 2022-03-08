@@ -8,6 +8,7 @@ import Trending from './components/Trending'
 import NotFound from './components/NotFound'
 import VideoItemDetails from './components/VideoItemDetails'
 import SavedVideos from './components/SavedVideos'
+import ProtectedRoute from './components/ProtectedRoute'
 import './App.css'
 
 // Replace your code here
@@ -21,11 +22,16 @@ class App extends Component {
 
   savedVideos = obj => {
     const {savedVideos} = this.state
-    this.setState({savedVideos: [...savedVideos, obj]})
+    const {videoInfo} = obj
+    console.log(videoInfo.id)
+
+    this.setState({savedVideos: [...savedVideos, videoInfo]})
   }
 
   render() {
     const {mode, savedVideos} = this.state
+    console.log(savedVideos)
+
     return (
       <Context.Provider
         value={{
@@ -37,12 +43,16 @@ class App extends Component {
       >
         <Switch>
           <Route exact path="/login" component={Login} />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/trending" component={Trending} />
-          <Route exact path="/videos/:id" component={VideoItemDetails} />
-          <Route exact path="/gaming" component={Gaming} />
-          <Route exact path="/bad-path" component={NotFound} />
-          <Route exact path="/saved-videos" component={SavedVideos} />
+          <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/trending" component={Trending} />
+          <ProtectedRoute
+            exact
+            path="/videos/:id"
+            component={VideoItemDetails}
+          />
+          <ProtectedRoute exact path="/gaming" component={Gaming} />
+          <ProtectedRoute exact path="/bad-path" component={NotFound} />
+          <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
           <Route component={NotFound} />
         </Switch>
       </Context.Provider>

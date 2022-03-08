@@ -130,7 +130,7 @@ class VideoItemDetails extends Component {
           const {mode, AddSavedVideos} = value
           const onClickOnSaveBtn = () => {
             this.setState(prev => ({isSavedBtn: !prev.isSavedBtn}))
-            AddSavedVideos({videoDetails})
+            AddSavedVideos({videoInfo: videoDetails})
           }
 
           const savedText = isSavedBtn ? 'Saved' : 'Save '

@@ -28,6 +28,11 @@ export const ContactDetails = styled.div`
 export const Navigator = styled.div`
   display: flex;
   align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  * {
+    margin-left: 5px;
+  }
 `
 export const Para = styled.p``
 export const Heading = styled.h1``

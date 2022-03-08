@@ -1,21 +1,16 @@
-import Cookies from 'js-cookie'
 import {Link, withRouter} from 'react-router-dom'
 import PopupComponent from '../PopupComponent'
 import {Image, NavBar, BtnsContainer, TogglerBtn, WebSiteLogoBtn} from './style'
 import Context from '../../ContextData'
 
-const Header = props => (
+const Header = () => (
   <Context.Consumer>
     {values => {
       const {modeToggle, mode} = values
       const onClickOnModeBtn = () => {
         modeToggle()
       }
-      const onClickLogoutBtn = () => {
-        const {history} = props
-        Cookies.remove('jwt_token')
-        history.replace('/login')
-      }
+
       const imageUrl = mode
         ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
         : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'

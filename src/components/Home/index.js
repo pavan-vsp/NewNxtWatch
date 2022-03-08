@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {GrClose} from 'react-icons/gr'
 import {BiSearchAlt2} from 'react-icons/bi'
-import {formatDistanceToNow} from 'date-fns'
+// import {formatDistanceToNow} from 'date-fns'
 
 import Context from '../../ContextData'
 import Header from '../Header'
@@ -119,7 +119,7 @@ class Home extends Component {
     <Context.Consumer>
       {value => {
         const {mode} = value
-
+        console.log(mode)
         return (
           <BannerImageContainer>
             <InnerBannerContainer>
