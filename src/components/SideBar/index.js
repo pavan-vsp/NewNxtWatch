@@ -16,66 +16,13 @@ import {
 } from './style'
 
 class SideBar extends Component {
-  state = {
-    HomeActive: true,
-    GamingActive: false,
-    TrendingActive: false,
-    SavedVideos: false,
-  }
-
-  ToggleHomeClr = () => {
-    this.setState(prev => ({
-      GamingActive: false,
-      SavedVideos: false,
-      TrendingActive: false,
-      HomeActive: !prev.HomeActive,
-    }))
-  }
-
-  ToggleGamingClr = () => {
-    this.setState(prev => ({
-      HomeActive: false,
-      TrendingActive: false,
-      SavedVideos: false,
-      GamingActive: !prev.GamingActive,
-    }))
-  }
-
-  ToggleTrendingClr = () => {
-    this.setState(prev => ({
-      HomeActive: false,
-      GamingActive: false,
-      SavedVideos: false,
-      TrendingActive: !prev.TrendingActive,
-    }))
-  }
-
-  ToggleSavedVideoClr = () => {
-    this.setState(prev => ({
-      GamingActive: false,
-      HomeActive: false,
-      TrendingActive: false,
-      SavedVideos: !prev.SavedVideos,
-    }))
-  }
-
   render() {
     return (
       <ContextData.Consumer>
         {value => {
           const {mode} = value
 
-          const {
-            HomeActive,
-            GamingActive,
-            TrendingActive,
-            SavedVideos,
-          } = this.state
           const textColor = mode ? '#f9f9f9' : '#0f0f0f'
-          const HomeClr = HomeActive ? 'red' : 'black'
-          const GamingClr = HomeActive ? '' : null
-          const TrendingClr = HomeActive ? '' : null
-          const SavedVideosClr = HomeActive ? '' : null
 
           return (
             <SideBarContainer themeMode={mode}>
