@@ -11,7 +11,7 @@ import {
 
 class VideoItem extends Component {
   render() {
-    const {videoDetails} = this.props
+    const {videoInfo} = this.props
     const {
       id,
       thumbnailUrl,
@@ -19,7 +19,7 @@ class VideoItem extends Component {
       channelName,
       profileImageUrl,
       title,
-    } = videoDetails
+    } = videoInfo
 
     return (
       <Context.Consumer>

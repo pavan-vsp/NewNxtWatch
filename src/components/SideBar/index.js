@@ -55,7 +55,7 @@ class SideBar extends Component {
                   </Navigator>
                 </Link>
                 <Link
-                  to="/"
+                  to="/saved-videos"
                   style={{'text-decoration': 'none', color: `${textColor}`}}
                 >
                   <Navigator>

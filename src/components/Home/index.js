@@ -98,7 +98,7 @@ class Home extends Component {
         </InputContainer>
         <Ul>
           {VideosList.map(eachItem => (
-            <VideItem videoDetails={eachItem} key={eachItem.id} />
+            <VideItem videoInfo={eachItem} key={eachItem.id} />
           ))}
         </Ul>
       </VideosListContainer>
