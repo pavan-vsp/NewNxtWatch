@@ -2,6 +2,7 @@ import {BiListPlus} from 'react-icons/bi'
 import Context from '../../ContextData'
 import Header from '../Header'
 import SideBar from '../SideBar'
+import SavedVideosItem from '../SavedVideosItem'
 
 import {
   SideVideos,
@@ -18,16 +19,13 @@ import {
   IconContainer,
   Heading,
 } from './style'
-import VideoItem from '../VideoItem'
+// import VideoItem from '../VideoItem'
 
 const SavedVideos = () => (
   <Context.Consumer>
     {value => {
       const {mode, savedVideos} = value
-      savedVideos.map(eachVideo => {
-        console.log(eachVideo.videoDetails)
-        return null
-      })
+
       const renderSavedVideos = () => (
         <UnorderedListForSavedVideo>
           <LinkItem darkMode={mode}>
@@ -38,9 +36,9 @@ const SavedVideos = () => (
           </LinkItem>
           <VideosContainer>
             {savedVideos.map(eachMovieDetails => (
-              <VideoItem
-                key={eachMovieDetails.videoDetails.id}
-                videoInfo={eachMovieDetails.videoDetails}
+              <SavedVideosItem
+                key={eachMovieDetails.id}
+                videoInfo={eachMovieDetails}
               />
             ))}
           </VideosContainer>

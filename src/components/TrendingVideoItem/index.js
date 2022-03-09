@@ -7,13 +7,19 @@ import {
   Para,
   DetailsContainer,
   RightSideDetails,
-  Heading,
 } from './styled'
 
 class VideoItem extends Component {
   render() {
     const {trendingDetails} = this.props
-    const {id, thumbnailUrl, viewCount, name, title} = trendingDetails
+    const {
+      id,
+      thumbnailUrl,
+      viewCount,
+      name,
+      title,
+      publishedAt,
+    } = trendingDetails
 
     return (
       <Context.Consumer>
@@ -30,9 +36,10 @@ class VideoItem extends Component {
 
                 <DetailsContainer>
                   <RightSideDetails>
-                    <Heading>{title}</Heading>
+                    <Para>{title}</Para>
                     <Para>{name}</Para>
                     <Para>{viewCount} Views</Para>
+                    <Para>{publishedAt} ago</Para>
                   </RightSideDetails>
                 </DetailsContainer>
               </VideoListItem>

@@ -79,7 +79,7 @@ class VideoItemDetails extends Component {
         description: data.video_details.description,
         videoUrl: data.video_details.video_url,
         viewCount: data.video_details.view_count,
-        channelName: data.video_details.channel.name,
+        name: data.video_details.channel.name,
         subscribeCount: data.video_details.channel.subscriber_count,
         profileImageUrl: data.video_details.channel.profile_image_url,
       }
@@ -162,7 +162,7 @@ class VideoItemDetails extends Component {
                       themeMode={mode}
                     >
                       <AiOutlineDislike size={20} />
-                      Unlike
+                      Dislike
                     </ActionButtonBtn>
                     <ActionButtonBtn
                       onClick={onClickOnSaveBtn}
@@ -179,7 +179,7 @@ class VideoItemDetails extends Component {
                   <ProfileImage src={videoDetails.profileImageUrl} />
                   <ProfileInfo>
                     <ProfileChannelInfo>
-                      <Para>{videoDetails.channelName}</Para>
+                      <Para>{videoDetails.name}</Para>
                       <Para>{videoDetails.subscribeCount} subscribers</Para>
                     </ProfileChannelInfo>
                     <ProfileDescription>
@@ -242,7 +242,7 @@ class VideoItemDetails extends Component {
           return (
             <VideoDetailsPageContainer themeMode={mode}>
               <Header />
-              <DetailsContainer>
+              <DetailsContainer themeMode={mode}>
                 <SideBarContainer>
                   <SideBar />
                 </SideBarContainer>

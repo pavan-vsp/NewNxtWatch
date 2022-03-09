@@ -29,6 +29,9 @@ import {
   Input,
   SideBarContainer,
   ListOfVideosContainer,
+  NoSearchResults,
+  NoSearchButton,
+  CloseBtn,
 } from './styed'
 
 const apiConstant = {
@@ -43,16 +46,22 @@ class Home extends Component {
     apiStatus: apiConstant.INITIAL,
     VideosList: [],
     bannerImageShow: true,
+    searchInputData: '',
   }
 
   componentDidMount() {
     this.renderVideos()
   }
 
+  onClickOnSearchBtn = () => {
+    this.renderVideos()
+  }
+
   renderVideos = async () => {
     this.setState({apiStatus: apiConstant.PROGRESS})
+    const {searchInputData} = this.state
     const jwtToken = Cookies.get('jwt_token')
-    const url = 'https://apis.ccbp.in/videos/all'
+    const url = `https://apis.ccbp.in/videos/all?search=${searchInputData}`
     const options = {
       method: 'GET',
       headers: {
@@ -79,28 +88,23 @@ class Home extends Component {
     }
   }
 
+  onSearchInput = e => {
+    this.setState({searchInputData: e.target.value})
+  }
+
   renderVideosUI = () => {
-    const {VideosList, bannerImageShow} = this.state
+    const {VideosList} = this.state
     return (
       <VideosListContainer>
-        {bannerImageShow && this.renderBannerImage()}
-        <InputContainer>
-          <Input
-            type="search"
-            placeholder="Search"
-            style={{background: 'transparent'}}
-          />
-          <SearchIconContainer>
-            <SearchButton type="button" style={{border: 'none'}}>
-              <BiSearchAlt2 size={20} />
-            </SearchButton>
-          </SearchIconContainer>
-        </InputContainer>
-        <Ul>
-          {VideosList.map(eachItem => (
-            <VideItem videoInfo={eachItem} key={eachItem.id} />
-          ))}
-        </Ul>
+        {VideosList.length === 0 ? (
+          this.renderNoResults()
+        ) : (
+          <Ul>
+            {VideosList.map(eachItem => (
+              <VideItem videoInfo={eachItem} key={eachItem.id} />
+            ))}
+          </Ul>
+        )}
       </VideosListContainer>
     )
   }
@@ -121,22 +125,43 @@ class Home extends Component {
         const {mode} = value
         console.log(mode)
         return (
-          <BannerImageContainer>
+          <BannerImageContainer data-testid="banner">
             <InnerBannerContainer>
               <BannerDetailsContainer>
-                <Image src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
-                <Heading>Buy Nxt Watch Premium prepaid plans with UPI</Heading>
+                <Image
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                  alt="nxt watch logo"
+                />
+                <Para>Buy Nxt Watch Premium prepaid plans with UPI</Para>
               </BannerDetailsContainer>
-              <GrClose
+              <CloseBtn
+                data-testid="close"
                 onClick={this.onClickOnCrossIcon}
                 style={{cursor: 'pointer'}}
-              />
+              >
+                <GrClose size={20} color="white" />
+              </CloseBtn>
             </InnerBannerContainer>
             <Button type="button">GET IT NOW</Button>
           </BannerImageContainer>
         )
       }}
     </Context.Consumer>
+  )
+
+  renderNoResults = () => (
+    <NoSearchResults>
+      <Image
+        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
+        alt="no videos"
+        style={{width: '200px'}}
+      />
+      <Heading>No Search results found</Heading>
+      <Para>Try different key words or remove search filter</Para>
+      <NoSearchButton type="button" onClick={this.renderVideos}>
+        Retry
+      </NoSearchButton>
+    </NoSearchResults>
   )
 
   FailureUI = () => (
@@ -170,6 +195,8 @@ class Home extends Component {
         return this.renderVideosUI()
       case apiConstant.PROGRESS:
         return this.LoadingUI()
+      case apiConstant.FAILURE:
+        return this.FailureUI()
 
       default:
         return null
@@ -181,6 +208,8 @@ class Home extends Component {
       <Context.Consumer>
         {value => {
           const {mode} = value
+          const {bannerImageShow, searchInputData} = this.state
+
           return (
             <HomeMainContainer>
               <Header />
@@ -189,6 +218,27 @@ class Home extends Component {
                   <SideBar />
                 </SideBarContainer>
                 <ListOfVideosContainer themeMode={mode}>
+                  {bannerImageShow && this.renderBannerImage()}
+                  <InputContainer>
+                    <Input
+                      type="search"
+                      placeholder="Search"
+                      style={{background: 'transparent'}}
+                      value={searchInputData}
+                      onChange={this.onSearchInput}
+                    />
+                    <SearchIconContainer>
+                      <SearchButton
+                        type="button"
+                        style={{border: 'none'}}
+                        data-testid="searchButton"
+                        onClick={this.onClickOnSearchBtn}
+                      >
+                        <BiSearchAlt2 size={20} />
+                      </SearchButton>
+                    </SearchIconContainer>
+                  </InputContainer>
+                  {}
                   {this.renderAllCases()}
                 </ListOfVideosContainer>
               </MoviesListContainer>

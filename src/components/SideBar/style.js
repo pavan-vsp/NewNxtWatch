@@ -10,7 +10,7 @@ export const SideBarContainer = styled.div`
   color: ${prop => (prop.themeMode ? '#f9f9f9' : '#0f0f0f')};
 `
 
-export const NavigatorsContainer = styled.div`
+export const NavigatorsContainer = styled.nav`
   background-color: ${prop => (prop.themeMode ? '#0f0f0f' : '#f9f9f9')};
 `
 export const SocialIconContainer = styled.div`
@@ -25,7 +25,7 @@ export const ContactDetails = styled.div`
   flex-direction: column;
   align-items: center;
 `
-export const Navigator = styled.div`
+export const Navigator = styled.li`
   display: flex;
   align-items: center;
   font-size: 20px;

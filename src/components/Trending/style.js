@@ -43,14 +43,21 @@ export const TrendingVideoContainer = styled.div`
   color: ${prop => (prop.themeMode ? '#f9f9f9' : '#0f0f0f')};
 `
 export const DetailsContainer = styled.div`
+  background-color: ${prop => (prop.themeMode ? '#0f0f0f' : '#f9f9f9')};
+  color: ${prop => (prop.themeMode ? '#f9f9f9' : '#0f0f0f')};
   display: flex;
 `
-export const SideBarContainer = styled.div`
-  width: 300px;
-`
+export const SideBarContainer = styled.ul``
 
 export const TrendingUi = styled.ul`
   display: flex;
   list-style: none;
   flex-wrap: wrap;
+`
+
+export const TrendingBannerContainer = styled.div`
+  width: 100vw;
+  height: 200px;
+  display: flex;
+  align-items: center;
 `

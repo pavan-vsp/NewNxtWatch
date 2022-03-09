@@ -38,8 +38,9 @@ export const GamingVideosContainer = styled.div`
 `
 
 export const DetailsContainer = styled.div`
+  background-color: ${prop => (prop.themeMode ? '#0f0f0f' : '#f9f9f9')};
+  color: ${prop => (prop.themeMode ? '#f9f9f9' : '#0f0f0f')};
   display: flex;
-  width: 100%;
 `
 
 export const GamingUi = styled.ul`
@@ -47,6 +48,9 @@ export const GamingUi = styled.ul`
   list-style: none;
   flex-wrap: wrap;
 `
-export const SideBarContainer = styled.div`
-  width: 300px;
+export const SideBarContainer = styled.ul``
+export const GamingBannerContainer = styled.div`
+  width: 200px;
+  display: flex;
+  align-items: center;
 `

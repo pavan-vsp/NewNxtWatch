@@ -31,10 +31,11 @@ const Header = () => (
               type="button"
               className="mode-toggler-btn"
               onClick={onClickOnModeBtn}
+              data-testid="theme"
             >
               <Image
                 src={modeImageUrl}
-                alt=""
+                alt="website logo"
                 className="mode-toggler-image"
                 imageWidth="50"
               />

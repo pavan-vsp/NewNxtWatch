@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
+import {HiFire} from 'react-icons/hi'
 import Cookies from 'js-cookie'
 import Context from '../../ContextData'
 import SideBar from '../SideBar'
@@ -18,6 +19,7 @@ import {
   SideBarContainer,
   DetailsContainer,
   TrendingUi,
+  TrendingBannerContainer,
 } from './style'
 
 const apiConstant = {
@@ -51,6 +53,7 @@ class Gaming extends Component {
         id: eachVideo.id,
         title: eachVideo.title,
         thumbnailUrl: eachVideo.thumbnail_url,
+        publishedAt: eachVideo.published_at,
         viewCount: eachVideo.view_count,
         name: eachVideo.channel.name,
         profileImageUrl: eachVideo.channel.profile_image_url,
@@ -84,13 +87,13 @@ class Gaming extends Component {
           : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
         return (
           <FailureContainer>
-            <Image src={failureImage} alt="im" />
+            <Image src={failureImage} alt="failure view" />
             <Heading>Oops! Something Went Wrong</Heading>
             <Para>
               We are having some trouble to complete your request. Please try
               again.
             </Para>
-            <Button type="button" onClick={this.renderVideos}>
+            <Button type="button" onClick={this.renderTrendingVideos}>
               Retry
             </Button>
           </FailureContainer>
@@ -128,11 +131,14 @@ class Gaming extends Component {
           return (
             <TrendingPageContainer>
               <Header />
-              <DetailsContainer>
+              <DetailsContainer themeMode={mode}>
                 <SideBarContainer>
                   <SideBar />
                 </SideBarContainer>
                 <TrendingVideoContainer themeMode={mode}>
+                  <TrendingBannerContainer>
+                    <HiFire color="red" size={30} /> <Heading>Trending</Heading>
+                  </TrendingBannerContainer>
                   {this.renderAllCases()}
                 </TrendingVideoContainer>
               </DetailsContainer>

@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import {
   UniversalStyle,
@@ -126,6 +126,11 @@ class Login extends Component {
   )
 
   render() {
+    const {showSubmitError, errorMsg} = this.state
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken !== undefined) {
+      return <Redirect to="/" />
+    }
     return (
       <Context.Consumer>
         {value => {
@@ -139,7 +144,7 @@ class Login extends Component {
             <LoginPageContainer>
               <UniversalStyle />
               <Inner>
-                <LogoImage src={imageUrl} alt="" />
+                <LogoImage src={imageUrl} alt="website logo" />
                 <FormContainer onSubmit={this.renderLoginDetails}>
                   {this.renderUsername()}
                   {this.renderPassword()}

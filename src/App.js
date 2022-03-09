@@ -30,7 +30,6 @@ class App extends Component {
 
   render() {
     const {mode, savedVideos} = this.state
-    console.log(savedVideos)
 
     return (
       <Context.Provider
@@ -51,6 +50,7 @@ class App extends Component {
             component={VideoItemDetails}
           />
           <ProtectedRoute exact path="/gaming" component={Gaming} />
+          <Route exact path="/bad-path" component={NotFound} />
           <ProtectedRoute exact path="/bad-path" component={NotFound} />
           <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
           <Route component={NotFound} />

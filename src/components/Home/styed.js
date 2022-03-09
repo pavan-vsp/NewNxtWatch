@@ -2,7 +2,7 @@ import styled from 'styled-components/macro'
 
 export const HomeMainContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  max-height: 100vh;
   * {
     text-decoration: none;
     outline: none;
@@ -103,6 +103,31 @@ export const SearchIconContainer = styled.div`
 export const SearchButton = styled.button`
   background-color: transparent;
 `
-export const SideBarContainer = styled.div`
-  width: 300px;
+export const SideBarContainer = styled.ul``
+
+// closeBtn
+
+export const CloseBtn = styled.button`
+  background-color: transparent;
+  padding: 0px;
+  align-self: flex-start;
+  border: none;
+  outline: none;
+`
+// NoSearchResults
+
+export const NoSearchResults = styled.div`
+  width: 100vw;
+  height: 89vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+export const NoSearchButton = styled.button`
+  background-color: royalblue;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
 `

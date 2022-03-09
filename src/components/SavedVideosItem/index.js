@@ -9,10 +9,19 @@ import {
   RightSideDetails,
 } from './style'
 
-class VideoItem extends Component {
+class SavedVideosItem extends Component {
   render() {
-    const {gameDetails} = this.props
-    const {id, thumbnailUrl, viewCount, title} = gameDetails
+    const {videoInfo} = this.props
+    const {
+      id,
+      thumbnailUrl,
+      viewCount,
+      channelName,
+      profileImageUrl,
+      title,
+      publishedAt,
+      name,
+    } = videoInfo
 
     return (
       <Context.Consumer>
@@ -23,9 +32,18 @@ class VideoItem extends Component {
               <Link to={`/videos/${id}`}>
                 <Image src={thumbnailUrl} alt="video thumbnail" />
                 <DetailsContainer>
+                  <Image
+                    imageWidth="100px"
+                    imageHeight="50px"
+                    src={profileImageUrl}
+                    alt="channel logo"
+                  />
                   <RightSideDetails>
                     <Para>{title}</Para>
+                    <Para>{channelName}</Para>
                     <Para>{viewCount} Views</Para>
+                    <Para>{name}</Para>
+                    <Para>{publishedAt}</Para>
                   </RightSideDetails>
                 </DetailsContainer>
               </Link>
@@ -36,4 +54,4 @@ class VideoItem extends Component {
     )
   }
 }
-export default VideoItem
+export default SavedVideosItem

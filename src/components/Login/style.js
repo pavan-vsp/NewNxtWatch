@@ -38,7 +38,7 @@ export const Inner = styled.div`
 
 export const LoginBtn = styled.button`
   width: 100%;
-  color: white;
+  color: #ffffff;
   padding: 5px;
   font-size: 18px;
   background-color: #4f46e5;

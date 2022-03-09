@@ -66,7 +66,7 @@ export const LinkItem = styled.li`
 export const Heading = styled.h1`
   color: ${props => (!props.darkMode ? '#0f0f0f' : '#f9f9f9')};
 `
-export const SideBarContainer = styled.div``
+export const SideBarContainer = styled.ul``
 
 export const UnorderedListForSavedVideo = styled.ul`
   display: flex;

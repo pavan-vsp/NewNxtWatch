@@ -39,7 +39,7 @@ export const Button = styled.button`
 
 export const VideoDetailsPageContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  max-height: 100vh;
 `
 export const VideoDetailsContainer = styled.div`
   width: 100%;
@@ -47,11 +47,11 @@ export const VideoDetailsContainer = styled.div`
   overflow-y: scroll;
 `
 export const DetailsContainer = styled.div`
+  background-color: ${prop => (prop.themeMode ? '#0f0f0f' : '#f9f9f9')};
+  color: ${prop => (prop.themeMode ? '#f9f9f9' : '#0f0f0f')};
   display: flex;
 `
-export const SideBarContainer = styled.div`
-  width: 300px;
-`
+export const SideBarContainer = styled.ul``
 
 export const ReactPlayerContainer = styled.div``
 export const VideoLayout = styled.div`
