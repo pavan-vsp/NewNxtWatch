@@ -11,8 +11,8 @@ export const HomeMainContainer = styled.div`
 
 export const MoviesListContainer = styled.div`
   display: flex;
-  background-color: ${prop => (prop.themeMode ? '#0f0f0f' : '#f9f9f9')};
-  color: ${prop => (prop.themeMode ? '#f9f9f9' : '#0f0f0f')};
+  background-color: ${prop => (prop.themeMode ? '#181818' : '#f9f9f9')};
+  color: ${prop => (prop.themeMode ? '#f9f9f9' : '#181818')};
 `
 
 export const Ul = styled.ul`
@@ -89,6 +89,9 @@ export const Input = styled.input`
   padding: 5px 10px;
   border: none;
   border: 2px solid grey;
+  background-color: ${prop => (prop.themeMode ? '#0f0f0f' : '#f9f9f9')};
+
+  color: ${prop => (prop.themeMode ? '#f9f9f9' : '#0f0f0f')};
 `
 
 export const SearchIconContainer = styled.div`
@@ -97,7 +100,7 @@ export const SearchIconContainer = styled.div`
   justify-content: center;
   width: 50px;
   border: 2px solid grey;
-  background-color: lightgray;
+  background-color: transparent;
   height: 35px;
 `
 export const SearchButton = styled.button`

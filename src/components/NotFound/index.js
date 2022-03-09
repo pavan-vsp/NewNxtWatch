@@ -1,5 +1,9 @@
+import styled from 'styled-components/macro'
 import './index.css'
 import Context from '../../ContextData'
+
+const Heading = styled.h1``
+const Para = styled.p``
 
 const NotFound = () => (
   <Context.Consumer>
@@ -11,6 +15,8 @@ const NotFound = () => (
       return (
         <div className="not-found-container">
           <img src={imageUrl} alt="not found" className="not-found-img" />
+          <Heading>Page Not Found</Heading>
+          <Para>we are sorry, the page you requested could not be found.</Para>
         </div>
       )
     }}

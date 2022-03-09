@@ -226,11 +226,12 @@ class Home extends Component {
                       style={{background: 'transparent'}}
                       value={searchInputData}
                       onChange={this.onSearchInput}
+                      themeMode={mode}
                     />
                     <SearchIconContainer>
                       <SearchButton
                         type="button"
-                        style={{border: 'none'}}
+                        style={{color: 'grey', border: 'none'}}
                         data-testid="searchButton"
                         onClick={this.onClickOnSearchBtn}
                       >
