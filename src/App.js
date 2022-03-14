@@ -24,19 +24,18 @@ class App extends Component {
     const {savedVideos} = this.state
     const {videoInfo} = obj
 
-    const SavedId = savedVideos.filter(
+    const SavedId = savedVideos.find(
       eachVideoId => eachVideoId.id === videoInfo.id,
     )
-    if (SavedId.length === 0) {
-      console.log('not yet saved')
-      this.setState({savedVideos: [...savedVideos, videoInfo]})
+
+    if (SavedId === undefined) {
+      this.setState({savedVideos: [videoInfo]})
     } else {
       const objId = savedVideos.filter(
         eachVideoId => eachVideoId.id !== videoInfo.id,
       )
-      console.log(objId)
+      this.setState({savedVideos: [...objId]})
     }
-    console.log(savedVideos.length)
   }
 
   render() {
