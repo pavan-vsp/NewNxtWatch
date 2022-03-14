@@ -23,9 +23,20 @@ class App extends Component {
   savedVideos = obj => {
     const {savedVideos} = this.state
     const {videoInfo} = obj
-    console.log(videoInfo.id)
 
-    this.setState({savedVideos: [...savedVideos, videoInfo]})
+    const SavedId = savedVideos.filter(
+      eachVideoId => eachVideoId.id === videoInfo.id,
+    )
+    if (SavedId.length === 0) {
+      console.log('not yet saved')
+      this.setState({savedVideos: [...savedVideos, videoInfo]})
+    } else {
+      const objId = savedVideos.filter(
+        eachVideoId => eachVideoId.id !== videoInfo.id,
+      )
+      console.log(objId)
+    }
+    console.log(savedVideos.length)
   }
 
   render() {
@@ -50,9 +61,10 @@ class App extends Component {
             component={VideoItemDetails}
           />
           <ProtectedRoute exact path="/gaming" component={Gaming} />
-          <Route exact path="/bad-path" component={NotFound} />
           <ProtectedRoute exact path="/bad-path" component={NotFound} />
           <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
+          <Route exact path="/bad-path" component={NotFound} />
+          <Route path="/not-found" component={NotFound} />
           <Route component={NotFound} />
         </Switch>
       </Context.Provider>

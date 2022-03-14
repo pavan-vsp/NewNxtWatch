@@ -8,6 +8,7 @@ import {
   DetailsContainer,
   RightSideDetails,
 } from './style'
+import './index.css'
 
 class VideoItem extends Component {
   render() {
@@ -19,8 +20,8 @@ class VideoItem extends Component {
         {value => {
           const {mode} = value
           return (
-            <VideoListItem themeMode={mode}>
-              <Link to={`/videos/${id}`}>
+            <Link to={`/videos/${id}`} className="Link-Item">
+              <VideoListItem themeMode={mode}>
                 <Image src={thumbnailUrl} alt="video thumbnail" />
                 <DetailsContainer>
                   <RightSideDetails>
@@ -28,8 +29,8 @@ class VideoItem extends Component {
                     <Para>{viewCount} Views</Para>
                   </RightSideDetails>
                 </DetailsContainer>
-              </Link>
-            </VideoListItem>
+              </VideoListItem>
+            </Link>
           )
         }}
       </Context.Consumer>

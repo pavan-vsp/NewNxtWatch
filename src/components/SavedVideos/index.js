@@ -19,7 +19,6 @@ import {
   IconContainer,
   Heading,
 } from './style'
-// import VideoItem from '../VideoItem'
 
 const SavedVideos = () => (
   <Context.Consumer>

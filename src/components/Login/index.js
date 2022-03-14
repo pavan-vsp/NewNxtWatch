@@ -21,7 +21,6 @@ class Login extends Component {
   state = {
     username: '',
     password: '',
-    showPassword: false,
     showMsz: false,
     errorMsz: '',
   }
@@ -64,10 +63,6 @@ class Login extends Component {
     }
   }
 
-  PasswordToggle = () => {
-    this.setState(prev => ({showPassword: !prev.showPassword}))
-  }
-
   renderUsername = () => {
     const {username} = this.state
     return (
@@ -84,32 +79,31 @@ class Login extends Component {
     )
   }
 
+  PasswordToggle = () => {
+    const PasswordInput = document.getElementById('password')
+    if (PasswordInput.type === 'password') {
+      PasswordInput.type = 'text'
+    } else {
+      PasswordInput.type = 'password'
+    }
+  }
+
   renderPassword = () => (
     <Context.Consumer>
       {() => {
-        const {password, showPassword} = this.state
+        const {password} = this.state
 
         return (
           <MainPasswordContainer>
             <InnerPassword>
-              <Label htmlFor="text">PASSWORD</Label>
-              {showPassword ? (
-                <Input
-                  type="text"
-                  id="text"
-                  placeholder="Password"
-                  value={password}
-                  onChange={this.onEnterPassword}
-                />
-              ) : (
-                <Input
-                  type="password"
-                  id="text"
-                  placeholder="Password"
-                  value={password}
-                  onChange={this.onEnterPassword}
-                />
-              )}
+              <Label htmlFor="password">PASSWORD</Label>
+              <Input
+                type="password"
+                id="password"
+                placeholder="Password"
+                value={password}
+                onChange={this.onEnterPassword}
+              />
             </InnerPassword>
             <CheckboxContainer>
               <input
@@ -147,8 +141,10 @@ class Login extends Component {
                 <FormContainer onSubmit={this.renderLoginDetails}>
                   {this.renderUsername()}
                   {this.renderPassword()}
-                  {showMsz ? <ErrorMsg>{errorMsz}</ErrorMsg> : null}
-                  <LoginBtn type="submit">Login</LoginBtn>
+                  {showMsz ? <ErrorMsg>*{errorMsz}</ErrorMsg> : null}
+                  <LoginBtn type="submit" style={{color: '#ffffff'}}>
+                    Login
+                  </LoginBtn>
                 </FormContainer>
               </Inner>
             </LoginPageContainer>

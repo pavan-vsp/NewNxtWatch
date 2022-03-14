@@ -28,8 +28,8 @@ class SavedVideosItem extends Component {
         {value => {
           const {mode} = value
           return (
-            <VideoListItem themeMode={mode}>
-              <Link to={`/videos/${id}`}>
+            <Link to={`/videos/${id}`} style={{width: '30%'}}>
+              <VideoListItem themeMode={mode}>
                 <Image src={thumbnailUrl} alt="video thumbnail" />
                 <DetailsContainer>
                   <Image
@@ -46,8 +46,8 @@ class SavedVideosItem extends Component {
                     <Para>{publishedAt}</Para>
                   </RightSideDetails>
                 </DetailsContainer>
-              </Link>
-            </VideoListItem>
+              </VideoListItem>
+            </Link>
           )
         }}
       </Context.Consumer>

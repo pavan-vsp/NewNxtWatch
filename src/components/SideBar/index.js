@@ -56,7 +56,7 @@ class SideBar extends Component {
                 </Link>
                 <Link
                   to="/saved-videos"
-                  style={{'text-decoration': 'none', color: `${textColor}`}}
+                  style={{textDecoration: 'none', color: `${textColor}`}}
                 >
                   <Navigator>
                     <BiListPlus />
